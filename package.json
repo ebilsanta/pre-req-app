@@ -1,0 +1,19 @@
+{
+  "name": "pre-req-app1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "hbs": "^4.2.0",
+    "mongodb": "^4.5.0",
+    "mongoose": "^6.2.10",
+    "puppeteer": "^13.5.2"
+  }
+}
