@@ -1,6 +1,7 @@
 const courseForm = document.querySelector('form');
 
-const cName = document.querySelector('select');
+var cName = document.querySelector('select');
+
 const id = document.querySelector('input')
 
 const line1 = document.querySelector('#line1');
@@ -10,8 +11,9 @@ const line4 = document.querySelector('#line4');
 const line5 = document.querySelector('#line5');
 
 courseForm.addEventListener('submit', (e) => {
-	e.preventDefault();
 
+
+	e.preventDefault();
 	fetch('/course?cname='+cName.value+'&id='+id.value).then((response) => {
 		response.json().then((data) => {
 			if (data.error){
