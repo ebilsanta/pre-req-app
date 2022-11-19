@@ -1,10 +1,7 @@
 const mongoose = require('mongoose')
+require('dotenv').config()
 
-const mongoAtlasUri = 'mongodb+srv://bobkwando:6569Rocks!@pre-req-app.vxi3b.mongodb.net/test'
-// mongoose.connect(mongoAtlasUri||'mongodb://127.0.0.1:27017/course-pre-req',{
-// 	useNewUrlParser: true,useUnifiedTopology: true 
-// 	// useFindAndModify: false
-// })
+const mongoAtlasUri = process.env.MONGO_ATLAS_URI
 
 try {
     // Connect to the MongoDB cluster

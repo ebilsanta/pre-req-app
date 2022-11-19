@@ -1,11 +1,12 @@
 const path = require('path');
 const express = require('express');
-require('../db/mongoose');
+require('./db/mongoose');
 const hbs = require('hbs');
 const Course = require('../models/course');
 
 const app = express();
 const port = process.env.PORT || 3000;
+
 
 const publicDirectoryPath = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname, '../templates/views');
@@ -22,11 +23,13 @@ app.get('', (req, res) => {
     Course.find({}).then((result) => {
 		let courseList = []
 		for (const course of result){
-			courseList.push(course.cName)
+			courseList.push({
+				id: course.id,
+				cName: course.cName})
 		}
-		courseList.sort();
+		courseList.sort((a,b)=>(a.cName > b.cName) ? 1 : -1);
 		res.render('index', {
-			title: 'IS Courses Info',
+			title: 'SMU Courses Info',
 			name: 'Thaddeus', 
 			courseList
 		});
@@ -39,7 +42,6 @@ app.get('', (req, res) => {
 app.get('/course', async (req,res) => {
 	if (!req.query.id && !req.query.cname){
 		res.send({error: "Please select a course or enter course code"})
-
 	} else if (req.query.id){
 		await Course.findOne({id: req.query.id})
 		.then((course)=>{
